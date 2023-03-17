@@ -1,5 +1,13 @@
 #!/bin/bash
 
-ffmpeg -y -i video.mp4 -c:v libx264 -b:v 3000k -r 60 -vsync cfr -pass 1 -c:a copy -f null /dev/null
-ffmpeg -i video.mp4 -c:v libx264 -b:v 3000k -r 60 -pass 2 -c:a copy output.mp4
-ffmpeg -stream_loop -1 -i output.mp4 -vsync cfr -c:v libx264 -s 852x480 -r 30 -f flv rtmp://den52.contribute.live-video.net/app/$TWITCH_STREAM_KEY
+VBR="2500k"                                    # Bitrate de la vidéo en sortie
+FPS="30"                                       # FPS de la vidéo en sortie
+QUAL="medium"
+TWITCH_STREAM_KEY="live_721961566_dc7k5h2sFcx2ikucZTvtUfNC8Drbrc"
+
+
+ffmpeg \
+    -stream_loop -1 -i "video.mp4" \
+    -vcodec libx264 -pix_fmt yuv420p -preset $QUAL -r $FPS -g $(($FPS * 2)) -b:v $VBR \
+    -acodec libmp3lame -ar 44100 -threads 6 -b:a 712000 -bufsize 512k \
+    -f flv rtmp://den52.contribute.live-video.net/app/$TWITCH_STREAM_KEY
