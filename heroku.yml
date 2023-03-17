@@ -2,6 +2,4 @@ build:
   docker:
     worker: Dockerfile
 
-run:
-  live.sh
 
