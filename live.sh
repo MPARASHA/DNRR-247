@@ -11,9 +11,7 @@ while true
 do
 ffmpeg \
     -stream_loop -1 -i "video.mp4" \
-    -c:v libx264 -pix_fmt yuv420p -preset $QUAL -r $FPS -g $(($FPS * 2)) -b:v $VBR \
-    -c:a aac \
-    -filter_complex "[0:a][1:a]amerge=inputs=2[aout]" \
-    -map "[aout]" -map 1:v:0 \
+    -vcodec libx264 -pix_fmt yuv420p -preset $QUAL -r $FPS -g $(($FPS * 2)) -b:v $VBR \
+    -acodec libmp3lame -ar 44100 -threads 6 -b:a 712000 -bufsize 512k \
     -f flv rtmp://den52.contribute.live-video.net/app/$TWITCH_STREAM_KEY
 done
