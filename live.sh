@@ -4,7 +4,8 @@ set -e
 
 VBR="2500k"                                    # Bitrate de la vidéo en sortie
 FPS="30"                                       # FPS de la vidéo en sortie
-QUAL="medium" 
+QUAL="medium"
+$TWITCH_STREAM_KEY="live_721961566_dc7k5h2sFcx2ikucZTvtUfNC8Drbrc"
 
 while true
 do
