@@ -1,0 +1,18 @@
+{
+  "name": "Twitch 24/7 live stream",
+  "description": "24 hour twitch livestream for rickroll or DN jokes ",
+  "repository": "https://github.com/MPARASHA/DNRR-247",
+  "stack": "container",
+  "env": {
+    "TWITCH_STREAM_KEY": {
+      "description": "The Twitch live stream key to be used.",
+      "required": true
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}
