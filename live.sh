@@ -6,7 +6,7 @@ QUAL="superfast"
 TWITCH_STREAM_KEY="live_721961566_dc7k5h2sFcx2ikucZTvtUfNC8Drbrc"
 
 
-ffmpeg \
+ffmpeg -hide_banner -loglevel error \
     -stream_loop -1 -i "video.mp4" \
     -c:v libx264 -pix_fmt yuv420p -preset $QUAL -r $FPS -g $(($FPS * 2)) -b:v $VBR \
     -c:a aac \
