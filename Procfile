@@ -1,1 +1,1 @@
-worker: bash live.sh
+worker: Dockerfile
