@@ -6,5 +6,5 @@ RUN mkdir /usr/src/app -p
 WORKDIR /usr/src/app/
 
 ADD . /usr/src/app/
-CMD chmod +x live.sh
+RUN chmod +x ./live.sh
 CMD ./live.sh
